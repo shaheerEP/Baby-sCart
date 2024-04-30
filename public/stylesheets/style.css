@@ -263,17 +263,28 @@ footer {
 /* Original color change on hover */
 .user-dropdown-toggle:hover { 
   background-color: #659ffd; /* Your dark, professional blue */
-  color: #fff; 
+  color: #7977e2; 
   border-color: transparent;
 }
-
+.navbar-toggler-icon {
+  width: 15px; 
+  height: 15px; 
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
 /* Color change after clicking */
 .navbar .user-dropdown-toggle:focus, 
 .navbar .user-dropdown-toggle.clicked { 
   background-color: #5fa1f8; /* Your playful blue */
-  color: #fff; 
+  color: #ffffff; 
   border-color: #4b97fa; 
 }
+/* Add this to your CSS file */
+.navbar-toggler {
+  background-color: #007bff;  /* Change to your desired color */
+  color: #2f1f75;                 /* White text for contrast */
+  border-color: #007bff;       /* Adjust border color if needed */
+}
+
 /* 
 login page  */
 
@@ -459,3 +470,233 @@ a:hover {
 .table tbody tr {
   border: none; 
 }
+
+/* Overall  Styles */
+.product-details {
+  margin: 20px auto;
+}
+
+
+.product-card {
+  display: flex; /* Enable flexbox for the card */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  border: 1px solid #EBEBEB; 
+  border-radius: 8px;       
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px; 
+}
+
+/* Optional: Adjust image size if needed */
+.product-card-img-top {
+  width: 100%; /* Adjust width as needed */
+  height: 200px; 
+  object-fit: contain;
+  border-bottom: 1px solid #EBEBEB; 
+}
+/* Typography */
+.product-card-title { 
+  font-size: 1.2em; 
+  color: #4779bb; /* Slightly playful blue */
+  font-weight: 600;  
+}
+
+.product-detail-info { /* For price and quantity */
+  color: #555;       
+}
+
+.product-price {
+  font-weight: bold;
+  color: #ec8c3e;    /* Warm orange */
+}
+/* Order Details Table */
+.order-details-table { 
+  border-collapse: collapse;
+  width: 100%; 
+  margin: 20px auto; /* Center the table */
+}
+
+.order-details-table th {
+  background-color: #F0F3F8;  /* Light background for headers */
+  color: #385482;           /* Darker professional blue */
+  font-weight: 600;  
+  padding: 12px 8px;        /* Add spacing */
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.order-details-table td {
+  padding: 8px;            
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.order-details-table tbody tr:nth-child(odd) {
+  background-color: #fafafa; /* Subtle striping */
+}
+
+/* Status Styles (Optional) */
+.order-status-pending {
+color: #f0ad4e;  /* A warm, pending orange */
+}
+.order-status-delivered {
+color: #5cb85c;  /* Success green */
+} 
+
+/* View Products Button */
+.view-products {
+  background-color: #aaccff; /* Your light blue */
+  border-color: #aaccff;  
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.view-products:hover {
+  background-color: #90b4e0; /* Slightly darker blue on hover */
+}
+/* Overall Checkout Styles */
+.checkout-container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #EBEBEB; 
+  border-radius: 8px;
+}
+
+/* Form Styles */
+.checkout-form label {
+  font-weight: 500;  /* Slightly bolder labels */
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  margin-top: 5px;  
+  border-radius: 4px;
+}
+
+
+
+/* Checkout Button */
+#checkout-button {
+  background-color: #aaccff; /* Your light blue */
+  border-color: #aaccff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #fff;         
+  font-weight: 600;   
+}
+
+#checkout-button:hover {
+  background-color: #90b4e0; /* Slightly darker on hover */
+}
+
+.payment-separator {
+  margin-right: 24px;
+  margin-top: 15px; 
+  margin-bottom: 15px;
+}
+.text-center { /* Assuming this class is on the heading */
+  font-family: 'Poppins', sans-serif; /* Example font */
+  color: #ec8c3e;    /* Example theme color */
+}
+/* Overall Signup Container */
+.signup-container {
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #F8F9FA; /* A light background */
+  border-radius: 8px;       
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);  
+}
+
+/* Form Styles */
+.signup-form label {
+  font-weight: 500;  /* Slightly bolder labels */
+}
+
+.signup-form input {
+  margin-top: 5px;  
+  border-radius: 4px;
+}
+
+/* Button Styles */
+.signup-button { /* Assuming this will be a class on the button */
+  background-color: #aaccff; /* Your light blue */
+  border-color: #aaccff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #fff;         
+  font-weight: 600;   
+}
+
+.signup-button:hover {
+  background-color: #90b4e0; /* Slightly darker on hover */
+}
+.signup-container { /* Assuming your main container has this class */
+  text-align: center;
+}
+/* Product Card Styles */
+.babycart-card {
+  border: 1px solid #EBEBEB; 
+  border-radius: 8px;       
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);  
+  padding: 15px;
+  margin-bottom: 20px; 
+}
+
+.babycart-card-img-top {
+height: 200px; 
+object-fit: contain;
+border-bottom: 1px solid #EBEBEB; 
+margin-bottom: 10px;
+}
+
+/* Typography */
+.babycart-product-title { 
+  font-size: 1.2em; 
+  color: #4779bb; /* Slightly playful blue */
+  font-weight: 600;   
+}
+
+.babycart-product-description {
+  color: #555; /* Darker gray */
+  font-size: 0.9em;  
+}
+
+.price {
+  color: #ec8c3e;    /* Warm orange */
+  font-weight: bold;
+  font-size: 1.1em; /* Slightly larger */
+}
+
+/* Button */
+.babycart-btn {
+  background-color: #aaccff; /* Matches your light blue  */
+  border-color: #aaccff;
+  padding: 8px 15px;
+  border-radius: 5px;    
+  color: #fff;          
+  font-weight: 500;     
+}
+
+.babycart-btn:hover {
+ background-color: #90b4e0; 
+ border-color: #90b4e0;
+}
+.order-confirmation-container { 
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #F8F9FA; /* A light background */
+  border-radius: 10px;       
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);  
+  text-align: center;
+}
+
+.order-confirmation-message { 
+  font-size: 1.6em; 
+  color: #385482; /* A slightly darker, professional blue */
+  font-weight: 600;   
+  margin-bottom: 20px;
+}
+.order-confirmation-message {
+  color: #ec8c3e;    /* Warm orange */
+  font-family: 'Poppins', sans-serif; /* Example playful font */
+} 
