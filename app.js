@@ -17,7 +17,6 @@ var app = express();
 var fileUpload=require('express-fileupload')
 const connection = require('./config/connection');
 var session = require('express-session')
-var userHelpers = require('./helpers/user-helpers');
 const helpers = require('./config/handlebars-helpers');
 const Razorpay = require('razorpay');
 const mongoose = require('mongoose');
@@ -86,7 +85,7 @@ app.use(function(err, req, res, next) {
 // Start the server
 //  Prepare functions for configuration
 const configureServer = (app) => {
-  const port = normalizePort(process.env.PORT || '3000');
+  const port = normalizePort(process.env.PORT ||  '3000');
   app.set('port', port);
   const server = http.createServer(app); // Use the imported http module
   server.listen(port, onListening);
