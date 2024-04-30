@@ -20,7 +20,9 @@ var session = require('express-session')
 var userHelpers = require('./helpers/user-helpers');
 const helpers = require('./config/handlebars-helpers');
 const Razorpay = require('razorpay');
-
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
+const connectionString = process.env.DATABASE_URL;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs'); // Set the view engine to 'handlebars'
@@ -42,10 +44,25 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
-app.use(session({secret:'key',
-resave: false,
-saveUninitialized: true,
-cookie:{maxAge:60000000}}))
+mongoose.connect(connectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+app.use(session({
+  secret: process.env.SESSION_SECRET, 
+  resave: false,
+  saveUninitialized: true, 
+  store: MongoStore.create({
+      mongoUrl: connectionString, 
+     
+  }), 
+  cookie: {
+      maxAge: 60000000 // 1 hour in milliseconds 
+  } 
+}));
 
 // ... (Rest of your route logic) ...
 app.use('/', usersRouter);
