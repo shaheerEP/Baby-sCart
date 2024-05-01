@@ -121,22 +121,36 @@ router.get('/add-product',verifyLoggin, function(req, res, next) {
   res.render('admin/add-product', {admin: true});
 })
 
-router.post('/add-product',verifyLoggin,(req,res)=>{
-
-
+router.post('/add-product', verifyLoggin, (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0) {
+      req.flash('error', 'No files were uploaded.');
+      return res.redirect('/add-product');
+  }
   let image = req.files.image;
   let uploadDir = './public/product-images/';
   let timestamp = Date.now();
   let imageName = timestamp + '_' + image.name;
 
   image.mv(uploadDir + imageName, function(err) {
-    if (err)
-      return res.status(500).send(err);
-    req.body.image = imageName;
-    productHelpers.addProduct(req.body);
-    res.redirect('/admin')
+      if (err) {
+          console.error("Error uploading image:", err); // Log the error for analysis
+          req.flash('error', 'There was a problem uploading the product image.');
+          return res.redirect('/add-product'); 
+      } 
+
+      req.body.image = imageName;
+      productHelpers.addProduct(req.body) 
+          .then(() => {
+              res.redirect('/admin'); 
+          })
+          .catch(err => {
+              console.error("Error adding product to database:", err);
+              req.flash('error', 'There was a problem saving the product.');
+              res.redirect('/add-product');
+          });
   });
 });
+
 
 router.get('/delete-product/:id',verifyLoggin,(req,res)=>{
   let prodId = req.params.id

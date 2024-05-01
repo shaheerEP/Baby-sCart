@@ -109,7 +109,7 @@ footer {
 }
 /* General Styles */
 .babycart-container { /* Replace .container with your prefix */
-  max-width: 960px;
+  max-width: 1500px;
   margin: 20px auto;
   padding: 20px; 
 }
@@ -241,11 +241,13 @@ footer {
   background-color: #689de2; /* Your light blue */
   border-color: #aaccff; 
   color:  #fff; 
+  font-family: 'Poppins', sans-serif;
 }
 .user-dropdown-toggle:hover { 
   background-color: #5e85c5; /* Your dark, professional blue */
   color: #fff; /* White text for contrast */
   border-color: transparent;
+  font-family: 'Poppins', sans-serif;
 }
 .user-dropdown-menu {
   border-color: #E0E0E0;
@@ -263,20 +265,30 @@ footer {
 /* Original color change on hover */
 .user-dropdown-toggle:hover { 
   background-color: #659ffd; /* Your dark, professional blue */
-  color: #7977e2; 
+  color: #ffffff; 
   border-color: transparent;
+  font-family: 'Poppins', sans-serif;
 }
 .navbar-toggler-icon {
   width: 15px; 
   height: 15px; 
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
+.navbar-collapse {
+  height: auto;
+}
+
+.move-down {
+  margin-top: 76px; /* Adjust this value as needed */
+}
+
 /* Color change after clicking */
 .navbar .user-dropdown-toggle:focus, 
 .navbar .user-dropdown-toggle.clicked { 
   background-color: #5fa1f8; /* Your playful blue */
   color: #ffffff; 
   border-color: #4b97fa; 
+  font-family: 'Poppins', sans-serif;
 }
 /* Add this to your CSS file */
 .navbar-toggler {
@@ -700,3 +712,40 @@ margin-bottom: 10px;
   color: #ec8c3e;    /* Warm orange */
   font-family: 'Poppins', sans-serif; /* Example playful font */
 } 
+/* Overall Container */
+.add-product-container {
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #F8F9FA; /* A light background */
+  border-radius: 8px;       
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);  
+}
+
+/* Form Styles */
+.add-product-form label {
+  font-weight: 500;  /* Slightly bolder labels */
+}
+
+.add-product-form input,  
+.add-product-form textarea {
+  margin-top: 5px;  
+  border-radius: 4px;
+}
+
+/* Button Styles */
+.add-product-button { /* Assuming a class on your submit button */  
+  background-color: #aaccff; /* Your light blue */
+  border-color: #aaccff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #fff;         
+  font-weight: 600;   
+}
+
+.add-product-button:hover {
+  background-color: #90b4e0; /* Slightly darker on hover */
+}
+h2.mb-5 { /* Assuming this class is on the heading */
+  font-family: 'Poppins', sans-serif; /* Example font */
+  color: #ec8c3e; /* Example theme color */
+}

@@ -32,3 +32,15 @@
         <!-- Your table goes here -->
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+ $(document).ready(function() {
+    $('form').on('submit', function(e) {
+        if ($('#image').get(0).files.length === 0) {
+            e.preventDefault();
+            alert('Upload an image');
+        }
+    });
+});
+
+</script>

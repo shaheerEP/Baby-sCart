@@ -27,6 +27,9 @@ const verifyLoggin = (req,res,next)=> {
     res.redirect('/login')
   }
 }
+router.get('/verify-login', verifyLoggin, function(req, res) {
+  res.json({ loggedIn: true });
+});
 
 
 
@@ -147,6 +150,9 @@ router.get('/login', (req, res) => {
   let loginErr = req.session.loginErr;
   req.session.loginErr = false; // Reset the flag
   res.render('user/login', { "loginErr": loginErr });
+});
+router.get('/verifyLogin', verifyLoggin, (req, res) => {
+  res.sendStatus(200); // Send a success status if the user is logged in
 });
 
 router.get('/cart', verifyLoggin, async (req, res) => {

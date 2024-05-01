@@ -1,23 +1,24 @@
-<section class="babycart-container"> 
+<section class="babycart-container">
+  <div class="container"> 
     <div class="row"> 
-        {{#each allproducts}}   
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3"> 
-                <div class="babycart-card">
-                  <img src="/product-images/{{this.image}}" class="babycart-card-img-top" alt="Card image cap"> 
-                    <div class="card-body">
-                        <h5 class="babycart-product-title"> {{this.name}} </h5>
-                         <p class="babycart-product-description"> {{this.description}} </p>
-                         <button onclick="addToCart('{{this._id}}')" class="babycart-btn">
-  <i class="fas fa-shopping-cart"></i> Add to cart 
-</button>
-                         <span class="text-muted ml-3">₹<span class="price">{{this.price}}</span></span>
-                    </div>
-                </div> 
-            </div>
-        {{/each}} 
-    </div> 
+      {{#each allproducts}}   
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3"> 
+          <div class="babycart-card">
+            <img src="/product-images/{{this.image}}" class="babycart-card-img-top img-fluid" alt="Card image cap"> 
+              <div class="card-body">
+                <h5 class="babycart-product-title"> {{this.name}} </h5>
+                <p class="babycart-product-description " style="max-width: 300px;"> {{this.description}} </p>
+                <button onclick="addToCart('{{this._id}}')" class="babycart-btn">
+                  <i class="fas fa-shopping-cart"></i> Add to cart 
+                </button>
+                <span class="text-muted ml-3">₹<span class="price">{{this.price}}</span></span>
+              </div>
+            </div> 
+          </div>
+       {{/each}} 
+     </div> 
+   </div>
 </section>
-
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
@@ -26,17 +27,52 @@ var $j = jQuery.noConflict();
 
 function addToCart(id) {
   $j.ajax({
-    url: '/add-to-cart/' + id,
+    url: '/verify-login',
     type: 'GET',
     success: function(response) {
-      // Update the cart badge with the new total quantity
-      $j('#cart-badge').text(response.totalQuantity);
+      if(response.loggedIn) {
+        $j.ajax({
+          url: '/add-to-cart/' + id,
+          type: 'GET',
+          success: function(response) {
+            // Update the cart badge with the new total quantity
+            $j('#cart-badge').text(response.totalQuantity);
+          },
+          error: function(error) {
+            console.log(error);
+          }
+        });
+      } else {
+        window.location.href = '/login';
+      }
     },
     error: function(error) {
       console.log(error);
     }
   });
 }
+
+
+$(document).ready(function() {
+    $('.navbar-toggler').on('click', function() {
+        $('.babycart-container').toggleClass('move-down');
+    });
+});
+
+$(".babycart-btn").click(function() {
+  $.ajax({
+    url: '/verifyLogin', // Endpoint where your `verifyLoggin` function is called
+    type: 'GET',
+    success: function(data) {
+      // If user is logged in, add to cart
+      addToCart('{{this._id}}');
+    },
+    error: function() {
+      // If user is not logged in, redirect to login page
+      window.location.href = '/login';
+    }
+  });
+});
 
 
 
