@@ -159,7 +159,7 @@ router.get('/delete-product/:id',verifyLoggin,(req,res)=>{
   res.redirect('/admin', {admin: true});
 });
  
-router.get('/edit-product/:id',verifyLoggin,async (req,res)=>{
+router.get('/edit-product/:id', verifyLoggin, async (req, res) => {
   try {
     const productId = req.params.id;
     const product = await productHelpers.getProductDetails(productId);
@@ -168,14 +168,17 @@ router.get('/edit-product/:id',verifyLoggin,async (req,res)=>{
       return res.status(404).send('Product not found'); // Handle non-existent product
     }
 
-    res.render('admin/edit-product',product, {admin: true}); // Render template with product data
+    // Merge product and {admin: true} into a single object
+    const viewData = Object.assign({}, product, {admin: true});
+
+    res.render('admin/edit-product', viewData); // Render template with product data
     console.log(product)
-  } catch (error) {
+  } catch (error) { 
     console.error(error);
     res.status(500).send('Internal server error'); // Handle errors gracefully
   }
-
 });
+
 
 router.post('/edit-product/:id',verifyLoggin,(req,res)=>{
   console.log(req.params.id,req.body)

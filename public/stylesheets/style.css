@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ------- Layout ------- */
 .container {
-  max-width: 1200px; /* Adjust as needed */
+  max-width: auto; /* Adjust as needed */
   margin: 0 auto;
   padding: 0 15px; /* Adjust spacing as needed */
 }
@@ -110,7 +110,7 @@ footer {
 /* General Styles */
 .babycart-container { /* Replace .container with your prefix */
   max-width: 1500px;
-  margin: 20px auto;
+  margin: 20px;
   padding: 20px; 
 }
 
@@ -121,14 +121,15 @@ footer {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);  
   padding: 15px;
   margin-bottom: 20px; 
+  max-width: 250px;
 }
 
 .babycart-card-img-top {
-  height: 200px;  /* Optional: Set a default height if needed */
+    /* Optional: Set a default height if needed */
   object-fit: contain;
   border-bottom: 1px solid #EBEBEB; 
   margin-bottom: 10px;
-  max-width: 100%;  /* Added to scale image down if wider */
+    /* Added to scale image down if wider */
   height: auto;     /* Added to allow automatic height based on aspect ratio */
 }
 
@@ -140,10 +141,37 @@ footer {
   font-weight: 600;   /* Slightly bolder */
   font-family: 'Poppins', sans-serif; /* Example font from Google Fonts */
 }
+/* Search Bar Styles */
+.search-bar input[type="text"] {
+  width: 100%; /* Make the search box responsive */
+  padding: 10px 15px;
+  margin: 10px 0; /* Some spacing */
+  border-radius: 8px; 
+  border: 1px solid #EBEBEB;  
+  float: right;
+  
+}
 
-.babycart-product-description {
-  color: #555;        /* Darker gray */
-  font-size: 0.9em;  
+/* Placeholder Styles */
+.search-bar input[type="text"]::placeholder {
+ color: #999;  /* Light gray placeholder text */  
+}
+
+/* Focus Styles (Optional) */
+.search-bar input[type="text"]:focus { 
+outline: none; /* Remove default focus outline */
+border-color: #aaccff; /* Light blue border on focus  */
+box-shadow: 0 0 5px rgba(170, 204, 255, 0.5); /* Subtle box shadow */
+}
+.search-bar input[type="text"] {
+  font-family: 'Poppins', sans-serif; /* Example playful font */
+  background-color: #F8F9FA;  /* A light background */
+}
+
+.babycart-product-category {
+  color: #4d4c4c;        /* Darker gray */
+  font-size: 1.0em;  
+  font-weight: 550;
 }
 
 .price {
@@ -159,19 +187,17 @@ footer {
   padding: 8px 15px;
   border-radius: 5px;    
   color: #fff;          /* White text */
-  font-weight: 500;     
+  font-weight: 500;    
+  background: linear-gradient(to right, #659bec 60%, #3878f0 100%);  
 }
-.babycart-btn:hover {
-  background-color: #90b4e0; /* Slightly lighter blue on hover */
-  box-shadow: 0 2px 5px rgba(100, 100, 230, 0.808); /* Subtle shadow for depth */
-}
-.babycart-btn {
-  background: linear-gradient(to right, #659bec 60%, #3878f0 100%); 
-  /* Adjust colors and percentages for your preference */
-}
+
+
 .babycart-btn:hover {
   transform: translateY(-2px); /* Small upward shift on hover */
   transition: transform 0.2s ease-out; /* Smooth transition effect */
+  background-color: #90b4e0; /* Slightly lighter blue on hover */
+  box-shadow: 0 2px 5px rgba(100, 100, 230, 0.808); /* Subtle shadow for depth */
+  color: #fff; 
 }
 
 /* Header Styles */
@@ -279,7 +305,7 @@ footer {
 }
 
 .move-down {
-  margin-top: 76px; /* Adjust this value as needed */
+  margin-top: 120px; /* Adjust this value as needed */
 }
 
 /* Color change after clicking */
@@ -287,13 +313,13 @@ footer {
 .navbar .user-dropdown-toggle.clicked { 
   background-color: #5fa1f8; /* Your playful blue */
   color: #ffffff; 
-  border-color: #4b97fa; 
+  border-color: #77a8e7ce; 
   font-family: 'Poppins', sans-serif;
 }
 /* Add this to your CSS file */
 .navbar-toggler {
   background-color: #007bff;  /* Change to your desired color */
-  color: #2f1f75;                 /* White text for contrast */
+  color: #3f42c4;                 /* White text for contrast */
   border-color: #007bff;       /* Adjust border color if needed */
 }
 
@@ -306,8 +332,10 @@ login page  */
   width: 100%; /* Limit form width for readability */
 }
 
+
 /* Card Styling */
 .card {
+  margin-top: 100px;
   border-radius: 8px; 
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08); 
 }
@@ -341,7 +369,6 @@ login page  */
   padding: 10px 15px; 
   margin-bottom: 15px;
 }
-
 /* Submit Button */
 .btn-primary { 
   background: linear-gradient(to right, #659bec 60%, #3878f0 100%); 
@@ -352,9 +379,19 @@ login page  */
   font-weight: 500; 
 }
 
+.btn-primary:focus {
+  border-color: #3878f0; /* Change to your desired blue */
+}
+
 .btn-primary:hover {
-  transform: translateY(-2px); 
-  transition: transform 0.2s ease-out;
+  transform: translateY(-2px); /* Move down 2px on hover */
+  transition: transform 0.2s ease-out; /* Smooth animation */
+}
+
+.btn-primary:active {
+  transform: translateY(1px); /* Move up 1px on click (active state)*/
+  transition: transform 0.1s ease-in; /* Quicker animation */
+  border-color: #3878f0b2; /* Change to your desired blue */
 }
 
 /* Additional Links */
@@ -487,7 +524,14 @@ a:hover {
 .product-details {
   margin: 20px auto;
 }
-
+.product {
+  flex: 1;  /* Allow products to grow and fill space*/
+  min-width: 200px;  /* Set a minimum width to prevent items from being too small */
+}
+.row {
+  display: flex;
+  flex-wrap: wrap; 
+}
 
 .product-card {
   display: flex; /* Enable flexbox for the card */
@@ -680,19 +724,16 @@ margin-bottom: 10px;
 }
 
 /* Button */
-.babycart-btn {
-  background-color: #aaccff; /* Matches your light blue  */
-  border-color: #aaccff;
-  padding: 8px 15px;
-  border-radius: 5px;    
-  color: #fff;          
-  font-weight: 500;     
+
+.babycart-btn:active {
+  transform: translateY(1px); /* Move up 1px on click (active state)*/
+  transition: transform 0.1s ease-in; /* Quicker animation */
+  border-color: #3878f0b2; /* Change to your desired blue */
+}
+.babycart-btn:focus {
+  border-color: #3878f0; /* Change to your desired blue */
 }
 
-.babycart-btn:hover {
- background-color: #90b4e0; 
- border-color: #90b4e0;
-}
 .order-confirmation-container { 
   margin: 40px auto;
   padding: 30px;
@@ -748,4 +789,70 @@ margin-bottom: 10px;
 h2.mb-5 { /* Assuming this class is on the heading */
   font-family: 'Poppins', sans-serif; /* Example font */
   color: #ec8c3e; /* Example theme color */
+}
+/* Cart List Styles */
+.cart-list {
+  margin-top: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center; /* Vertically align content */
+  border: 1px solid #EBEBEB;
+  border-radius: 8px;
+  padding: 15px; 
+  margin-bottom: 15px; 
+}
+
+.cart-item-image {
+  width: 80px; /* Adjust as needed */
+  margin-right: 20px;
+}
+
+.cart-item-image img {
+  max-width: 100%; 
+  height: auto; 
+  border-radius: 5px; 
+}
+
+.cart-item-details {
+  flex: 1; /* Fill available space */
+}
+
+.cart-item-price {
+  color: #ec8c3e; /* Your warm orange */
+  font-weight: 600;
+}
+
+/* Add more styles as needed for quantity controls, remove button, etc. */
+.cart-item-count { 
+  background: linear-gradient(to right, #659bec 60%, #3878f0 100%); 
+  border: none;
+  padding: 5px 15px; 
+  border-radius: 5px;
+  color: #fff; 
+  font-weight: 500; 
+  font-size: 20px;
+}
+
+.cart-item-count:focus {
+  border-color: #3878f0; /* Change to your desired blue */
+}
+
+.cart-item-count:hover {
+  transform: translateY(-2px); /* Move down 2px on hover */
+  transition: transform 0.2s ease-out; /* Smooth animation */
+}
+
+.cart-item-count:active {
+  transform: translateY(1px); /* Move up 1px on click (active state)*/
+  transition: transform 0.1s ease-in; /* Quicker animation */
+  border-color: #3878f0b2; /* Change to your desired blue */
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* This ensures the header stays on top of other elements */
 }

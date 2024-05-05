@@ -24,9 +24,10 @@
                 <td> ₹ {{this.totalAmount}}</td> 
                 <td class="order-status-{{this.status}}"> {{this.status}} </td> 
                 <td> 
-                    <a href="/ordered-products">
-                        <button class="btn btn-primary view-products" data-id="{{this._id}}">View Products</button>
-                    </a> 
+                    <a href="/ordered-products?id={{this._id}}">
+    <button class="btn btn-primary view-products">View Products</button>
+</a> 
+ 
                 </td> 
            </tr> 
            {{/each}}
@@ -35,25 +36,4 @@
 </div>
 
 
-    <script>
-       $(document).ready(function() {
-  $('.view-products').click(function() {
-    var orderId = $(this).data('id');
-
-    $.ajax({
-      url: '/ordered-products',
-      type: 'GET',
-      data: { id: orderId },
-      success: function(response) {
-        // Redirect to the '/ordered-products' page with the orderId as a query parameter
-        window.location.href = '/ordered-products?id=' + orderId;
-      },
-      error: function(error) {
-        console.error(error);
-      }
-    });
-  });
-});
-
-
-    </script>
+    

@@ -24,11 +24,11 @@ const verifyLoggin = (req,res,next)=> {
     
     next()
   }else{
-    res.redirect('/login')
+    res.redirect('/login') 
   }
 }
 router.get('/verify-login', verifyLoggin, function(req, res) {
-  res.json({ loggedIn: true });
+  res.json({ loggedIn: true });  
 });
 
 
@@ -41,7 +41,7 @@ router.get('/', async function(req, res, next) {
     totalQuantity = await userHelpers.getCartCount(req.session.user.id);
   }
 
-  productHelper.getAllProducts().then((allproducts) => {
+  productHelper.getAllProducts().then((allproducts) => { 
     const products = allproducts.map(product => ({
       _id:product._id,
       name: product.name,
@@ -280,11 +280,9 @@ router.post('/orders', verifyLoggin, async (req, res) => {
 
 
 router.get('/ordered-products', verifyLoggin, async function(req, res, next) {
-  // Retrieve the orderId from the query parameters
-  var orderId = req.query.id;
-console.log(orderId)
-  var orders = await userHelpers.getOrdersByOrderId(orderId);
-  console.log(orders);
+  
+
+  var orders = await userHelpers.getOrdersByOrderId(req.query.id);
   res.render('user/ordered-products', {orders, user: req.session.user});
 });
 

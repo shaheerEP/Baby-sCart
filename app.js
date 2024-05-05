@@ -5,20 +5,20 @@ const http = require('http'); // Import the http module
 
 // ...rest of your app.js code...
 
-var createError = require('http-errors');
+var createError = require('http-errors'); 
 var express = require('express');
-var path = require('path');
+var path = require('path'); 
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
 var usersRouter = require('./routes/users');
-var adminRouter = require('./routes/admin');
+var adminRouter = require('./routes/admin'); 
 var app = express();
-var fileUpload=require('express-fileupload')
+var fileUpload=require('express-fileupload') 
 const connection = require('./config/connection');
 var session = require('express-session')
 const helpers = require('./config/handlebars-helpers');
-const Razorpay = require('razorpay');
+const Razorpay = require('razorpay'); 
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const connectionString = process.env.DATABASE_URL;

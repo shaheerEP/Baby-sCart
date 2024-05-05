@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
 
-
+ 
 
  let User = mongoose.model('User', new mongoose.Schema({ 
     name: String,
     email: String,
     password: String
-  })); 
+  }));  
 
 
 const OrderSchema = new mongoose.Schema({
   deliveryDetails: {
-    mobile: {
+    mobile: { 
       type: String,
       required: true
     },

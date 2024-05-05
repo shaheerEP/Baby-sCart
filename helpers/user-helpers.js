@@ -219,35 +219,48 @@ async removeFromCart(userId) {
 ,
 async getOrdersByUserId(userId) {
   try {
-    const orders = await Order.find({ userId: userId, status: { $ne: 'pending' } });
+    const orders = await Order.find({ 
+      userId: userId, 
+      status: { $ne: 'pending' },
+      // Filter products where quantity is greater than 0
+      'products.quantity': { $gt: 0 } 
+    });
+
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
     return orders.map(order => {
       const orderObject = order.toObject();
       orderObject.submittedAt = orderObject.submittedAt.toLocaleString("en-IN", options);
       return orderObject;
     });
-  } catch (error) { 
+  } catch (error) {
     console.error(error);
-    return null;
+    return null; 
   }
-}
-,
+}, 
 
 async getOrdersByOrderId(orderId) {
   try {
-    const order = await Order.findOne({ _id: orderId });
+    const order = await Order.findOne({ _id: orderId }); 
+
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+
     if (order) {
       const orderObject = order.toObject();
       orderObject.submittedAt = orderObject.submittedAt.toLocaleString("en-IN", options);
+
+      // Filter the products array to keep only those with quantity > 0 
+      orderObject.products = orderObject.products.filter(product => product.quantity > 0);
+
       return orderObject;
     }
     return null;
   } catch (error) {
     console.error(error);
-    throw error;
+    throw error; 
   }
-},
+}
+
+,
 async generateRazorpay(orderId, totalAmount,user) {
   var options = {
     amount: totalAmount * 100, // amount in the smallest currency unit
