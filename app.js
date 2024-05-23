@@ -33,7 +33,7 @@ app.engine('hbs', hbs({
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
     helpers: helpers
-  }
+  }  
 }));
 
 app.use(logger('dev'));
@@ -49,7 +49,7 @@ mongoose.connect(connectionString, {
 })
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
-
+  
 app.use(session({
   secret: process.env.SESSION_SECRET, 
   resave: false,
@@ -62,7 +62,7 @@ app.use(session({
       maxAge: 60000000 // 1 hour in milliseconds 
   } 
 }));
-
+ 
 // ... (Rest of your route logic) ...
 app.use('/', usersRouter);
 app.use('/admin', adminRouter);

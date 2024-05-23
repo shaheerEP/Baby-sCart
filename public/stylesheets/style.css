@@ -378,7 +378,11 @@ login page  */
   color: #fff; 
   font-weight: 500; 
 }
-
+.btn-account {
+  background-color: rgb(71, 120, 212);
+  color: white;
+  
+}
 .btn-primary:focus {
   border-color: #3878f0; /* Change to your desired blue */
 }
@@ -856,3 +860,45 @@ h2.mb-5 { /* Assuming this class is on the heading */
   width: 100%;
   z-index: 1000; /* This ensures the header stays on top of other elements */
 }
+.order-list {
+  margin-top: 20px;
+}
+
+.order-item {
+  background-color: #F8F9FA; /* Light background */
+  border: 1px solid #EBEBEB;
+  border-radius: 8px;
+  padding: 20px;  
+  margin-bottom: 15px;
+}
+
+.order-item-header {
+  font-weight: 600; 
+  margin-bottom: 10px; 
+  color: #385482; /* Darker blue */
+}
+
+
+
+.order-detail {
+  margin-bottom: 5px;
+}
+
+.order-detail-label {
+  font-weight: 500;  
+}
+
+/* Style status dynamically based on class (e.g., order-status-pending) */
+.order-status {
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.order-status-pending { 
+  background-color: #f0ad4e; /* Orange for pending */
+  color: #fff;
+}
+
+/* Add styles for 'delivered', 'cancelled', etc., as needed */
+
+
